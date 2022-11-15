@@ -31,8 +31,10 @@ public class FindAllFiles {
         boolean exists = item.exists();
         if (exists) {
             if (item.isFile()) {
-                list.add(item.getPath());
-                // System.out.println(item.getPath());
+                if (!item.getName().contains(".DS_Store")) {
+                    list.add(item.getPath());
+                    // System.out.println(item.getPath());
+                }
             } else if (item.isDirectory()) {
                 File[] items = item.listFiles();
                 for (File f : items) {
